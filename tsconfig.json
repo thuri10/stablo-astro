@@ -5,27 +5,13 @@
     "baseUrl": "src",
     "types": ["@astrojs/image/client"],
     "paths": {
-      "@lib/*": [
-        "lib/*"
-      ],
-      "@utils/*": [
-        "utils/*"
-      ],
-      "@data/*": [
-        "data/*"
-      ],
-      "@components/*": [
-        "components/*"
-      ],
-      "@layouts/*": [
-        "layouts/*"
-      ],
-      "@assets/*": [
-        "assets/*"
-      ],
-      "@pages/*": [
-        "pages/*"
-      ],
+      "@lib/*": ["lib/*"],
+      "@utils/*": ["utils/*"],
+      "@data/*": ["data/*"],
+      "@components/*": ["components/*"],
+      "@layouts/*": ["layouts/*"],
+      "@assets/*": ["assets/*"],
+      "@pages/*": ["pages/*"]
     }
   }
 }

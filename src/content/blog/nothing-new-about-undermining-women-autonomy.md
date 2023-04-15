@@ -4,7 +4,7 @@ excerpt: "In 2007, the now-defunct San Antonio Independent Christian Film Festiv
 publishDate: "2022-11-18T11:39:36.050Z"
 image: "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=1000"
 category: "lifestyle"
-author: "joshua-wood"
+author: "martin-thuri"
 tags: [tag1, tag2, tag3]
 ---
 
@@ -15,6 +15,41 @@ I braced myself. My social media feeds were flooded with Handmaid’s Tale refer
 Rewatching this not-too-distant artifact of white, evangelical pop-culture, I was reminded that women’s submission has long been a driving feature of a movement with outsized political influence in our country. We are merely witnessing years of power, positioning, and theological normalization coming to fruition.
 
 The title of the film comes from an essay by founder of the Presbyterian Church of Scotland, John Knox, who wrote the tract: “The First Blast of the Trumpet Against the Monstrous Regiment of Women” in 1558 in opposition to female political leaders such as Mary I of England, who persecuted Protestant Christians, and thanks to whom, Knox had found himself exiled and out of a job. Knox wrote: “how abominable before God is the Empire or Rule of a wicked woman, yea, of a traiteresse and bastard.”
+
+```javascript
+import getReadingTime from "reading-time";
+import { toString } from "mdast-util-to-string";
+
+/** Format Date */
+export const getFormattedDate = (date) =>
+  date
+    ? new Date(date).toLocaleDateString("en-us", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })
+    : "";
+
+/** Estimated Reading time */
+export function remarkReadingTime() {
+  return function (tree, { data }) {
+    const textOnPage = toString(tree);
+    const readingTime = getReadingTime(textOnPage);
+
+    data.astro.frontmatter.estReadingTime = readingTime.minutes;
+  };
+}
+
+/** Check if an Image Path is Relative or Absolute */
+export const checkImageUrl = (image, url) => {
+  try {
+    new URL(image);
+    return image;
+  } catch (error) {
+    return new URL(image, url).toString();
+  }
+};
+```
 
 Next, the film leaps forward to damn modern feminism. Christians, the narrator says, cannot be egalitarians — those who believe all people are equal and deserve equal rights and opportunities. Phyllis Schlafly, who successfully galvanized opposition to ratification of the Equal Rights Amendment, was featured in an interview, saying “the problem with feminism — the principle problem — is the cultivation of an attitude of victimization. Feminism tries to make women think they are victims of an oppressive, male-dominated, patriarchal society.” Further, she asserts the feminist movement set out to make the role of fulltime wife and homemaker economically impossible and socially disdained.
 
